@@ -13,7 +13,7 @@ jobs:
     - run: sudo apt-get install curl graphviz
 
     # Install a precompiled binary of dune-deps.
-    - run: sudo curl -o /usr/bin/dune-deps https://github.com/mjambon/dune-deps/releases/download/v1.2.0/dune-deps-1.2.0-linux-x86_64-ubuntu-16.04
+    - run: sudo curl -L -o /usr/bin/dune-deps https://github.com/mjambon/dune-deps/releases/download/v1.2.0/dune-deps-1.2.0-linux-x86_64-ubuntu-16.04
     - run: sudo chmod 755 /usr/bin/dune-deps
 
     # Run dune-deps on checked-out git repo, producing an image.
