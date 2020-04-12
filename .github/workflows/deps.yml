@@ -14,14 +14,17 @@ jobs:
 
     # Install a precompiled binary of dune-deps.
     - run: sudo curl -L -o /usr/bin/dune-deps https://github.com/mjambon/dune-deps/releases/download/v1.2.0/dune-deps-1.2.0-linux-x86_64-ubuntu-16.04
+    - run: sha256sum -c "b4b61f0c59d2b74fd67f09c9c12652682b36ad6d879f484775b99dab6b43863d  /usr/bin/dune-deps"
     - run: sudo chmod 755 /usr/bin/dune-deps
 
-    # Run dune-deps on checked-out git repo, producing an image.
+    # Run dune-deps on our checked-out git repo, producing an image.
+    # All output goes to the .deps folder.
+    #
     - run: mkdir -p .deps
     - run: dune-deps -x .git > .deps/deps.dot
     - run: tred < .deps/deps.dot | dot -Tpng > .deps/deps.png
 
-    # Add or update the image that same repo.
+    # Add the output to our git repo.
     - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     - run: git pull github "$GITHUB_REF" --ff-only
     - run: git add .deps
