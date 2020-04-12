@@ -1,0 +1,5 @@
+digraph {
+  "exe:./dune:0" [label="hello",shape=diamond]
+  "lib:world" [label="world",style=filled]
+  "exe:./dune:0" -> "lib:world"
+}
