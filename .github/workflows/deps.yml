@@ -17,5 +17,7 @@ jobs:
     - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     - run: git pull github "$GITHUB_REF" --ff-only
     - run: git add .deps.png
+    - run: git config --global user.name ${GITHUB_ACTOR}
+    - run: git config --global user.email ${GITHUB_ACTOR}@example.com
     - run: git commit -m "Update dependency graph" .deps.png
     - run: git push github HEAD:"$GITHUB_REF"
