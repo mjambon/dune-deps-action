@@ -1,19 +1,24 @@
-name: Create Internal Dependency Graph
+name: dependency graph
 on: [push]
 jobs:
   run:
-    name: Deps
+    name: dependency graph
     runs-on: [ubuntu-latest]
     steps:
+    # Get a copy of the git repository to analyze.
     - uses: actions/checkout@master
-    - uses: avsm/setup-ocaml@master
-      with:
-        ocaml-version: '4.09.0'
+
+    # Install curl, dot, tred.
     - run: sudo apt-get update
-    - run: sudo apt-get install graphviz
-    - run: opam update
-    - run: opam install dune-deps
-    - run: opam exec -- dune-deps -x .git | tred | dot -Tpng > .deps.png
+    - run: sudo apt-get install curl graphviz
+
+    # Install a precompiled binary of dune-deps.
+    - run: curl -o /usr/bin/dune-deps https://github.com/mjambon/dune-deps/releases/download/v1.2.0/dune-deps-1.2.0-linux-x86_64-ubuntu-16.04
+
+    # Run dune-deps on checked-out git repo, producing an image.
+    - run: dune-deps -x .git | tred | dot -Tpng > .deps.png
+
+    # Add or update the image that same repo.
     - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     - run: git pull github "$GITHUB_REF" --ff-only
     - run: git add .deps.png

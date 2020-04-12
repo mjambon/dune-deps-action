@@ -1,3 +1,6 @@
+; A sample dune file.
+; It is used to demonstrate dune-deps extracting a dependency graph from it.
+
 (executable
   (name hello)
   (libraries world)
