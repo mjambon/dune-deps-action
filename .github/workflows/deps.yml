@@ -1,0 +1,20 @@
+name: Create Internal Dependency Graph
+on: [push]
+jobs:
+  run:
+    name: Deps
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: avsm/setup-ocaml@master
+      with:
+        ocaml-version: '4.09.0'
+    - run: sudo apt-get update
+    - run: sudo apt-get install graphviz
+    - run: opam update
+    - run: opam install dune-deps
+    - run: opam exec -- dune-deps | tred | dot -Tpng > deps.png
+    - uses: actions/upload-artifact@master
+      with:
+        name: deps.png
+        path: deps.png
