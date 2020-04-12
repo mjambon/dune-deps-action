@@ -13,8 +13,9 @@ jobs:
     - run: sudo apt-get install graphviz
     - run: opam update
     - run: opam install dune-deps
-    - run: opam exec -- dune-deps | tred | dot -Tpng > deps.png
-    - uses: actions/upload-artifact@master
-      with:
-        name: deps.png
-        path: deps.png
+    - run: opam exec -- dune-deps -x .git | tred | dot -Tpng > .deps.png
+    - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+    - run: git pull github "$GITHUB_REF" --ff-only
+    - run: git add .deps.png
+    - run: git commit -m "Update dependency graph" .deps.png
+    - run: git push github HEAD:"$GITHUB_REF"
