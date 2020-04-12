@@ -14,15 +14,18 @@ jobs:
 
     # Install a precompiled binary of dune-deps.
     - run: sudo curl -o /usr/bin/dune-deps https://github.com/mjambon/dune-deps/releases/download/v1.2.0/dune-deps-1.2.0-linux-x86_64-ubuntu-16.04
+    - run: sudo chown 755 /usr/bin/dune-deps
 
     # Run dune-deps on checked-out git repo, producing an image.
-    - run: dune-deps -x .git | tred | dot -Tpng > .deps.png
+    - run: mkdir -p .deps
+    - run: dune-deps -x .git > .deps/deps.dot
+    - run: tred < .deps/deps.dot | dot -Tpng > .deps/deps.png
 
     # Add or update the image that same repo.
     - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     - run: git pull github "$GITHUB_REF" --ff-only
-    - run: git add .deps.png
+    - run: git add .deps
     - run: git config --global user.name ${GITHUB_ACTOR}
     - run: git config --global user.email ${GITHUB_ACTOR}@example.com
-    - run: git commit -m "Update dependency graph" .deps.png
+    - run: git commit -m "Update dependency graph" .deps
     - run: git push github HEAD:"$GITHUB_REF"
