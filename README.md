@@ -1,7 +1,7 @@
 Keep a dependency graph in your README.md
 ==
 
-This repo defines a GitHub Action _workflow_ useful for OCaml projects
+This repo defines a GitHub Actions _workflow_ useful for OCaml projects
 hosted on GitHub and using the Dune build system. It defines
 instructions for GitHub to automatically scan your project, generate a
 dependency graph with [dune-deps](https://github.com/mjambon/dune-deps),
