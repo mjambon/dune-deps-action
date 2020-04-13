@@ -72,7 +72,7 @@ If the `dune-deps` command failed or you're not getting the graph you
 want, you can customize it by editing the relevant line in
 `.github/workflows/dune-deps.yml`. Install `dune-deps` on your
 development machine (e.g. `opam install dune-deps`) and check out
-the options offered by `dune-deps --help`. See also the
+the available options with `dune-deps --help`. See also the
 [dune-deps homepage](https://github.com/mjambon/dune-deps) for common
 usage scenarios.
 
