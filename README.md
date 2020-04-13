@@ -81,3 +81,14 @@ Troubleshooting
 
 If anything goes wrong or is harder than it should, please open an
 issue to let us know.
+
+Project status
+--
+
+The dune-deps-action project was initiated by Martin Jambon. It is
+placed in the Public Domain for the sake of convenience. See
+[UNLICENSE](UNLICENSE).
+
+Software maintenance takes time, skill, and effort. Please contribute
+to open-source projects to the best of your ability. Talk to your
+employer about it today.
