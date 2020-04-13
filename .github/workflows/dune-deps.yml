@@ -1,8 +1,8 @@
-name: dependency graph
+name: Dune dependency graph
 on: [push]
 jobs:
   run:
-    name: dependency graph
+    name: Dune dependency graph
     runs-on: [ubuntu-latest]
     steps:
     # Get a copy of the git repository to analyze.
@@ -28,7 +28,7 @@ jobs:
     - run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     - run: git pull github "$GITHUB_REF" --ff-only
     - run: git add .deps
-    - run: git config user.name "$GITHUB_ACTOR"
+    - run: git config user.name "Dune dependency graph GitHub Action"
     - run: git config user.email "$GITHUB_ACTOR"@github
     - run: git diff-index --quiet HEAD || git commit -m "Update dependency graph" .deps
     - run: git push github HEAD:"$GITHUB_REF"
