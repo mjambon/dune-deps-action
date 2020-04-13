@@ -12,7 +12,7 @@ automatically as your project's source code changes.
 Setup instructions
 --
 
-### Step 1: Install GitHub Action
+### Step 1: Install GitHub Action workflow
 
 Copy the `.github` folder of this repo into yours. Commit and push.
 
@@ -22,8 +22,12 @@ your `.github/workflows/`.
 Visit the "Actions" tab on your project's GitHub page. You should see
 some work being done for the "dependency graph" workflow.
 
-If successful, the should now be a `.deps` folder at the root of your
+If successful, there should now be a `.deps` folder at the root of your
 project.
+
+Note: There are ways to reference an existing workflow rather than
+copy-pasting it as suggested above. It may or may not be a good
+thing.
 
 ### Step 2: Show the graph
 
