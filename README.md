@@ -17,7 +17,7 @@ into your git repo. The advantage is that it's similar to other CI
 providers (CircleCI, Travis, etc.) and lets you customize it without
 too much magic.
 
-### Step 1: Install GitHub Action workflow
+### Step 1: Put config into your repo
 
 Make a copy of
 [`.github/workflows/dune-deps.yml`](.github/workflows/dune-deps.yml)
