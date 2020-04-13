@@ -1,15 +1,21 @@
 Keep a dependency graph in your README.md
 ==
 
-This repo defines a so-called GitHub Action useful for OCaml projects hosted
-on GitHub and using the Dune build system. It defines instructions for
-GitHub to automatically scan your project, generate a dependency graph
-with [dune-deps](https://github.com/mjambon/dune-deps),
-and commit the result into your project as `.deps/deps.png`.
+This repo defines a GitHub Action _workflow_ useful for OCaml projects
+hosted on GitHub and using the Dune build system. It defines
+instructions for GitHub to automatically scan your project, generate a
+dependency graph with [dune-deps](https://github.com/mjambon/dune-deps),
+and commit the resulting image into your project as `.deps/deps.png`.
 You can then show the graph as part of your `README.md`. The graph is
-updated automatically within minutes as your project's source code changes.
+updated automatically within minutes of a push.
 
-Manual setup instructions
+**Disclaimer**: If the author understands correctly, this is not a GitHub
+_action_ proper, but a _workflow_. An action is something you can
+include in a yaml workflow. For instance in a workflow, the line
+`- uses: actions/checkout@master` invokes the action named "checkout",
+which is registered with the GitHub Marketplace.
+
+Setup instructions
 --
 
 These are instructions for setting up a job by putting instructions
@@ -29,10 +35,9 @@ your git project:
 
 ```bash
 # Copy config
-git clone https://github.com/mjambon/dune-deps.git
 mkdir -p .github/workflows
-cp dune-deps-action/.github/workflows/dune-deps.yml .github/workflows/
-rm -rf dune-deps-action
+curl -L -o .github/workflows/dune-deps.yml \
+  https://raw.githubusercontent.com/mjambon/dune-deps-action/master/.github/workflows/dune-deps.yml
 
 # Normal add/commit/push
 git add .github/workflows/dune-deps.yml
