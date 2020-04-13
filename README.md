@@ -29,7 +29,7 @@ your git project:
 
 ```bash
 # Copy config
-git clone https://github.com/mjambon/dune-deps-action
+git clone https://github.com/mjambon/dune-deps.git
 mkdir -p .github/workflows
 cp dune-deps-action/.github/workflows/dune-deps.yml .github/workflows/
 rm -rf dune-deps-action
