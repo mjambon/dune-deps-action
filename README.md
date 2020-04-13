@@ -21,7 +21,8 @@ too much magic.
 
 Make a copy of
 [`.github/workflows/dune-deps.yml`](.github/workflows/dune-deps.yml)
-into your repo, same path.
+into your repo, same path. GitHub will find it. There's nothing for
+you to activate.
 
 It can be achieved with the following instructions, from the root of
 your git project:
