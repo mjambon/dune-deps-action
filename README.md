@@ -40,14 +40,11 @@ git commit .github/workflows/dune-deps.yml
 git push origin master
 ```
 
-Visit the "Actions" tab on your project's GitHub page. You should see
+Then visit the "Actions" tab on your project's GitHub page. You should see
 some work being done for the "dependency graph" workflow.
 
 If successful, there should now be a `.deps` folder at the root of your
 project.
-
-Note: There are ways to reference an external workflow rather than
-copy-pasting it as suggested above. (TODO: instructions)
 
 ### Step 2: Show the graph
 
