@@ -25,10 +25,10 @@ too much magic.
 
 ### Step 1: Put config into your repo
 
-Make a copy of
+Copy
 [`.github/workflows/dune-deps.yml`](.github/workflows/dune-deps.yml)
-into your repo, same path. GitHub will find it. There's nothing for
-you to activate.
+into your repo, same path. GitHub will find it automatically, as long
+as Actions are not disabled for your repo or organization.
 
 It can be achieved with the following instructions, from the root of
 your git project:
