@@ -7,7 +7,7 @@ GitHub to automatically scan your project, generate a dependency graph
 with [dune-deps](https://github.com/mjambon/dune-deps),
 and commit the result into your project as `.deps/deps.png`.
 You can then show the graph as part of your `README.md`. The graph is
-automatically as your project's source code changes.
+updated automatically within minutes as your project's source code changes.
 
 Manual setup instructions
 --
